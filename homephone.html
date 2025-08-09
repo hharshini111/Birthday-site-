@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Birthday</title>
+<link rel="stylesheet" href="hello.css" />
+</head>
+<body>
+
+<input type="checkbox" id="open-envelope" hidden />
+
+
+<label class="envelope" for="open-envelope">
+  <div class="flap"></div>
+  <div class="body"></div>
+</label>
+
+<div class="message">🎉Happy birthday to my favorite person!🎉</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Balloon Party</title>
+  <style>
+    #balloon-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 9999;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: 0;
+      width: 70px; 
+      height: 90px;
+      background: radial-gradient(circle at 50% 40%, #cbd9ff, #90c4ff);
+      border-radius: 50%;
+      opacity: 0.9;
+      animation-fill-mode: forwards;
+    }
+
+    .string {
+      position: absolute;
+      top: 90px; 
+      left: 50%;
+      width: 2px;
+      height: 50px;
+      background: rgb(255, 255, 255);
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-85vh);
+      }
+    }
+
+    @keyframes drift {
+      0%, 100% {
+        transform: translateY(-85vh) translateX(0);
+      }
+      50% {
+        transform: translateY(-85vh) translateX(10px);
+      }
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 9px 40px;
+      color: white;
+      background-color: #baaaff;
+      border-radius: 18px;
+      margin: 100px auto 200px;
+      border-color: rgb(163, 211, 255);
+      cursor: pointer;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="start-balloons">Get balloons</button>
+
+  <div id="balloon-container"></div>
+
+  <script>
+    const balloonContainer = document.getElementById('balloon-container');
+    const startBtn = document.getElementById('start-balloons');
+
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+
+     
+      balloon.style.left = (5 + Math.random() * 90) + 'vw';
+
+      //float up for 10
+      balloon.style.animation = 'floatUp 10s ease forwards';
+
+      // string
+      const string = document.createElement('div');
+      string.classList.add('string');
+      balloon.appendChild(string);
+
+      balloonContainer.appendChild(balloon);
+
+      balloon.addEventListener('animationend', () => {
+        balloon.style.animation = 'drift 4s ease-in-out infinite';
+      });
+    }
+
+    startBtn.addEventListener('click', () => {
+      
+      let count = 0;
+      const maxBalloons = 20;
+      const interval = setInterval(() => {
+        createBalloon();
+        count++;
+        if (count >= maxBalloons) clearInterval(interval);
+      }, 300);
+    });
+  </script>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  const checkbox=document.getElementById('open-envelope');
+  checkbox.addEventListener('change', ()=>{
+    if(checkbox.checked){
+      confetti({
+        particleCount:1000,
+        spread:200,
+        origin:{y:0.4}
+
+      })
+    }
+  })
+</script>
+</body>
+</html>
+
+
+
+
+

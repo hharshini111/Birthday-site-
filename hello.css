@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-image: url('back.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  align-items: center;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  padding-bottom: 0px;
+}
+
+
+.envelope {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  cursor: pointer;
+  margin-bottom: -50px;
+}
+
+.envelope .body {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 110px;
+  background: rgb(173, 217, 250);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; 
+  background: rgb(147, 196, 252);
+clip-path: polygon(0 0, 50% 85%, 100% 0);
+  border-radius: 8px 8px 0 0; 
+  z-index: 2; 
+  transform-origin: top center; 
+  transition: transform .4s ease;
+}
+
+
+/* when it opens */
+#open-envelope:checked + label .flap {
+  transform: rotateX(-180deg) translateY(120px);
+}
+
+.message {
+  display:none;
+  font-size: 1.75rem;
+  color: rgb(244, 226, 244);
+  margin: 40px 0 0 0;
+}
+
+.button {
+  display:none;
+  margin-top:20px;
+  font-size: 1rem;
+  border-color: #ffe4ec;
+  background: #ffa9be;
+  color:#ffe4ec
+}
+
+/*  after click */
+#open-envelope:checked ~ .message {
+  display: block;
+}
+#open-envelope:checked ~ .button {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+.images{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+  opacity:0;
+
+}
+.images img{
+  width:60px;
+  height:60px;
+  opacity:0;
+  
+
+}
+
+#open-envelope:checked ~ .images {
+  opacity: 1;
+}
+
+#open-envelope:checked + label .flap {
+  transform: rotateX(180deg); 
+}
+
+
+
+
+

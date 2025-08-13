@@ -1,4 +1,4 @@
-Birthday Site
+Birthday Site(pretty basic)
 This little project is a simple birthday website with some fun visuals and a bit of animation. I just named it “Birthday Site”-keeping it simple.
 
 I made it because I wanted a different way to wish instead of just a text. Plus, I figured it’d be a nice way to practice a bit of JavaScript.

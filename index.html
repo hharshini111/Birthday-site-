@@ -144,6 +144,36 @@
       })
     }
   })
+  function createBalloon() {
+  const balloon = document.createElement('div');
+  balloon.classList.add('balloon');
+
+  //  colors
+  const colors = [
+    '#FFB3BA', // pink
+    '#FFDFBA', // peach
+    '#FF'
+  ];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  balloon.style.background = `radial-gradient(circle at 50% 40%, white, ${randomColor})`;
+
+  balloon.style.left = (5 + Math.random() * 90) + 'vw';
+
+  // float up
+  balloon.style.animation = 'floatUp 10s ease forwards';
+
+  // string
+  const string = document.createElement('div');
+  string.classList.add('string');
+  balloon.appendChild(string);
+
+  balloonContainer.appendChild(balloon);
+
+  balloon.addEventListener('animationend', () => {
+    balloon.style.animation = 'drift 4s ease-in-out infinite';
+  });
+}
+
 </script>
 </body>
 </html>
